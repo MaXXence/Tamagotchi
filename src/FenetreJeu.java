@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.event.*;
 
-
 public class FenetreJeu extends JFrame{
 
     int largeur;
@@ -28,6 +27,9 @@ public class FenetreJeu extends JFrame{
     JLabel textAgeJours;
     JLabel textEtatPhys;
     JLabel textEtatMoral;
+
+    JButton boutonSauvegarder;
+    JButton boutonQuitter;
 
     JPanel barre1fond;
     JPanel barre2fond;
@@ -111,7 +113,8 @@ public class FenetreJeu extends JFrame{
 
         affichagePanneau4(perso, pieces);
 
-        boutonSetVisible(perso, pieces);
+        boutonPieceSetVisible(perso, pieces);
+        boutonActionSetVisible(perso);
 
         this.add(panneau1);
         this.add(panneau2);
@@ -219,6 +222,23 @@ public class FenetreJeu extends JFrame{
         textEtatMoral.setFont(new Font("Bookman Old Style", Font.PLAIN, 16));
         textEtatMoral.setBounds((int)(l*0.2),(int)(h*0.6+20),200,20);
         panneau2.add(textEtatMoral);
+
+        boutonSauvegarder=new JButton("Sauvegarder");
+        boutonSauvegarder.setBounds((int)(l*0.1),(int)(h*0.85), 120, 24);
+        panneau2.add(boutonSauvegarder);
+
+        boutonSauvegarder.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+            }});
+
+        boutonQuitter=new JButton("Quitter");
+        boutonQuitter.setBounds((int)(l*0.1+140), (int)(h*0.85), 120, 24);
+        panneau2.add(boutonQuitter);
+
+        boutonQuitter.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                fermerFenetre();
+            }});
     }
 
     void creationBarres(Personnage perso)
@@ -407,9 +427,6 @@ public class FenetreJeu extends JFrame{
         boutonJouer.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
             }});
-
-
-
     }
 
     private void affichagePanneau4(Personnage perso, ArrayList<Piece> pieces)
@@ -421,7 +438,8 @@ public class FenetreJeu extends JFrame{
         boutonSalon.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
                 perso.setPiece(0);
-                boutonSetVisible(perso, pieces);
+                boutonPieceSetVisible(perso, pieces);
+                boutonActionSetVisible(perso);
             }});
 
         boutonCuisine=new JButton(new ImageIcon("img/fleche.png"));
@@ -431,7 +449,8 @@ public class FenetreJeu extends JFrame{
         boutonCuisine.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
                 perso.setPiece(1);
-                boutonSetVisible(perso, pieces);
+                boutonPieceSetVisible(perso, pieces);
+                boutonActionSetVisible(perso);
             }});
 
         boutonChambre=new JButton(new ImageIcon("img/fleche.png"));
@@ -441,7 +460,8 @@ public class FenetreJeu extends JFrame{
         boutonChambre.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
                 perso.setPiece(2);
-                boutonSetVisible(perso, pieces);
+                boutonPieceSetVisible(perso, pieces);
+                boutonActionSetVisible(perso);
             }});
 
         boutonSdb=new JButton(new ImageIcon("img/fleche.png"));
@@ -451,7 +471,8 @@ public class FenetreJeu extends JFrame{
         boutonSdb.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
                 perso.setPiece(3);
-                boutonSetVisible(perso, pieces);
+                boutonPieceSetVisible(perso, pieces);
+                boutonActionSetVisible(perso);
             }});
 
         boutonToilettes=new JButton(new ImageIcon("img/fleche.png"));
@@ -461,7 +482,8 @@ public class FenetreJeu extends JFrame{
         boutonToilettes.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
                 perso.setPiece(4);
-                boutonSetVisible(perso, pieces);
+                boutonPieceSetVisible(perso, pieces);
+                boutonActionSetVisible(perso);
             }});
 
         boutonJardin=new JButton(new ImageIcon("img/fleche.png"));
@@ -471,7 +493,8 @@ public class FenetreJeu extends JFrame{
         boutonJardin.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
             {
                 perso.setPiece(5);
-                boutonSetVisible(perso, pieces);
+                boutonPieceSetVisible(perso, pieces);
+                boutonActionSetVisible(perso);
             }});
 
         imagePlanLabel=new JLabel(new ImageIcon("img/PlanMaison.png"));
@@ -479,27 +502,65 @@ public class FenetreJeu extends JFrame{
         panneau4.add(imagePlanLabel);
     }
 
-    void boutonSetVisible(Personnage perso, ArrayList<Piece> pieces)
+    void boutonPieceSetVisible(Personnage perso, ArrayList<Piece> pieces)
     {
-        JButton[] boutonListe = {boutonSalon, boutonCuisine, boutonChambre, boutonSdb, boutonToilettes, boutonJardin};
-        for(int i=0;i<boutonListe.length;i++)
+        JButton[] boutonPieceListe = {boutonSalon, boutonCuisine, boutonChambre, boutonSdb, boutonToilettes, boutonJardin};
+        for(int i=0;i<boutonPieceListe.length;i++)
         {
             if(i==perso.getPiece())
             {
-                boutonListe[i].setVisible(false);
+                boutonPieceListe[i].setVisible(false);
             }
             else
             {
                 if(pieces.get(perso.getPiece()).getPieceAdja().contains(pieces.get(i)))
                 {
-                    boutonListe[i].setVisible(true);
+                    boutonPieceListe[i].setVisible(true);
                 }
                 else
                 {
-                    boutonListe[i].setVisible(false);
+                    boutonPieceListe[i].setVisible(false);
                 }
             }
         }
+    }
+
+    void boutonActionSetVisible(Personnage perso)
+    {
+        boutonActionReset();
+        if(perso.getPiece()==0)
+        {
+        }
+        else if(perso.getPiece()==1)
+        {
+            boutonManger.setVisible(true);
+        }
+        else if(perso.getPiece()==2)
+        {
+            boutonDormir.setVisible(true);
+        }
+        else if(perso.getPiece()==3)
+        {
+            boutonLaver.setVisible(true);
+        }
+        else if(perso.getPiece()==4)
+        {
+            boutonAllerToilettes.setVisible(true);
+        }
+        else if(perso.getPiece()==5)
+        {
+            boutonJouer.setVisible(true);
+        }
+    }
+
+    void boutonActionReset()
+    {
+        boutonManger.setVisible(false);
+        boutonDormir.setVisible(false);
+        boutonReveiller.setVisible(false);
+        boutonLaver.setVisible(false);
+        boutonAllerToilettes.setVisible(false);
+        boutonJouer.setVisible(false);
     }
 
     private Color getCouleurBarre(int val)

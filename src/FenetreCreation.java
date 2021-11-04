@@ -133,7 +133,7 @@ public class FenetreCreation extends JFrame{
         this.add(panneau2);
         this.add(panneau3);
         this.add(panneau4);
-        this.setSize(400,338);//300+38 taille de la barre de titre = 38px
+        this.setSize(400+16,300+38);//300+38 taille de la barre de titre = 38px
         this.setLayout(null);
         this.setVisible(true);
 

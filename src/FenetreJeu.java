@@ -125,6 +125,7 @@ public class FenetreJeu extends JFrame{
         this.setLayout(null);
         this.setVisible(true);
     }
+    
     void selectImagePerso(Personnage perso)
     {
         if(perso instanceof Chien)
@@ -144,6 +145,7 @@ public class FenetreJeu extends JFrame{
             imagePerso=new ImageIcon("img/robot.gif");
         }
     }
+
     void selectImagePiece(Personnage perso)
     {
         if(perso.getPiece()==0)
@@ -316,7 +318,6 @@ public class FenetreJeu extends JFrame{
         barre6.setBackground(getCouleurBarre((int)perso.getCaracteristique(5)));
         barre6fond.add(barre6);
         
-
 /*     -----     Affichage des titres des barres des caracteristiques     -----     */
 
         titreBarre1= new JLabel(perso.getNomCaracteristiques().get(0));
@@ -574,7 +575,6 @@ public class FenetreJeu extends JFrame{
             return new Color(255,0,0);
         }
     }
-
 
     void fermerFenetre()
     {

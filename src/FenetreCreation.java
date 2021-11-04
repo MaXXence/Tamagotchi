@@ -23,6 +23,7 @@ public class FenetreCreation extends JFrame{
     FenetreCreation()
     {
         this.setTitle("Création Tamagotchi");
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         active = true;

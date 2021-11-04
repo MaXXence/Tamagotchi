@@ -7,7 +7,7 @@ public class Personnage {
 	private String nom;
 	private LocalDate dateNaissance;
 	private int pieceActuelle;
-	private double[] caracteristiques={5,25,50,70,90};
+	private double[] caracteristiques={5,25,50,70,90,100};
 	protected ArrayList<String> nomCaracteristiques;
 	private String etatPhysique;
 	private String etatMoral;

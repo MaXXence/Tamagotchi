@@ -34,24 +34,36 @@ public class FenetreJeu extends JFrame{
     JPanel barre3fond;
     JPanel barre4fond;
     JPanel barre5fond;
+    JPanel barre6fond;
 
     JPanel barre1;
     JPanel barre2;
     JPanel barre3;
     JPanel barre4;
     JPanel barre5;
+    JPanel barre6;
+
 
     JLabel titreBarre1;
     JLabel titreBarre2;
     JLabel titreBarre3;
     JLabel titreBarre4;
     JLabel titreBarre5;
+    JLabel titreBarre6;
 
     JLabel image1Label;
     JLabel image2Label;
     JLabel image3Label;
     JLabel image4Label;
     JLabel image5Label;
+    JLabel image6Label;
+
+    JButton boutonManger;
+    JButton boutonDormir;
+    JButton boutonReveiller;
+    JButton boutonAllerToilettes;
+    JButton boutonLaver;
+    JButton boutonJouer;
 
     JLabel imagePlanLabel;
 
@@ -217,111 +229,187 @@ public class FenetreJeu extends JFrame{
 /*     -----     Affichage des fonds des barres des caracteristiques     -----     */
 
         barre1fond = new JPanel();
-        barre1fond.setBounds((int)(l*0.3), (int)(h*0.05), (int)(l*0.6), (int)(h*0.1));
+        barre1fond.setBounds((int)(l*0.3), (int)(h*0.05), (int)(l*0.5), (int)(h*0.08));
         barre1fond.setBackground(Color.black);
         barre1fond.setLayout(null);
         panneau3.add(barre1fond);
 
         barre2fond = new JPanel();
-        barre2fond.setBounds((int)(l*0.3), (int)(h*0.25), (int)(l*0.6), (int)(h*0.1));
+        barre2fond.setBounds((int)(l*0.3), (int)(h*0.2), (int)(l*0.5), (int)(h*0.08));
         barre2fond.setBackground(Color.black);
         barre2fond.setLayout(null);
         panneau3.add(barre2fond);
 
         barre3fond = new JPanel();
-        barre3fond.setBounds((int)(l*0.3), (int)(h*0.45), (int)(l*0.6), (int)(h*0.1));
+        barre3fond.setBounds((int)(l*0.3), (int)(h*0.35), (int)(l*0.5), (int)(h*0.08));
         barre3fond.setBackground(Color.black);
         barre3fond.setLayout(null);
         panneau3.add(barre3fond);
 
         barre4fond = new JPanel();
-        barre4fond.setBounds((int)(l*0.3), (int)(h*0.65), (int)(l*0.6), (int)(h*0.1));
+        barre4fond.setBounds((int)(l*0.3), (int)(h*0.50), (int)(l*0.5), (int)(h*0.08));
         barre4fond.setBackground(Color.black);
         barre4fond.setLayout(null);
         panneau3.add(barre4fond);
 
         barre5fond = new JPanel();
-        barre5fond.setBounds((int)(l*0.3), (int)(h*0.85), (int)(l*0.6), (int)(h*0.1));
+        barre5fond.setBounds((int)(l*0.3), (int)(h*0.65), (int)(l*0.5), (int)(h*0.08));
         barre5fond.setBackground(Color.black);
         barre5fond.setLayout(null);
         panneau3.add(barre5fond);
 
+        barre6fond = new JPanel();
+        barre6fond.setBounds((int)(l*0.3), (int)(h*0.80), (int)(l*0.5), (int)(h*0.08));
+        barre6fond.setBackground(Color.black);
+        barre6fond.setLayout(null);
+        panneau3.add(barre6fond);
+
 /*     -----     Affichage des barres des caracteristiques     -----     */
 
         barre1 = new JPanel();
-        barre1.setBounds(4, 4, (int)((l*0.6-8)*(perso.getCaracteristique(0)/100)), (int)(h*0.1-8));
+        barre1.setBounds(4, 4, (int)((l*0.5-8)*(perso.getCaracteristique(0)/100)), (int)(h*0.08-8));
         barre1.setBackground(getCouleurBarre((int)perso.getCaracteristique(0)));
         barre1fond.add(barre1);
 
         barre2 = new JPanel();
-        barre2.setBounds(4, 4, (int)((l*0.6-8)*(perso.getCaracteristique(1)/100)), (int)(h*0.1-8));
+        barre2.setBounds(4, 4, (int)((l*0.5-8)*(perso.getCaracteristique(1)/100)), (int)(h*0.08-8));
         barre2.setBackground(getCouleurBarre((int)perso.getCaracteristique(1)));
         barre2fond.add(barre2);
 
         barre3 = new JPanel();
-        barre3.setBounds(4, 4, (int)((l*0.6-8)*(perso.getCaracteristique(2)/100)), (int)(h*0.1-8));
+        barre3.setBounds(4, 4, (int)((l*0.5-8)*(perso.getCaracteristique(2)/100)), (int)(h*0.08-8));
         barre3.setBackground(getCouleurBarre((int)perso.getCaracteristique(2)));
         barre3fond.add(barre3);
 
         barre4 = new JPanel();
-        barre4.setBounds(4, 4, (int)((l*0.6-8)*(perso.getCaracteristique(3)/100)), (int)(h*0.1-8));
+        barre4.setBounds(4, 4, (int)((l*0.5-8)*(perso.getCaracteristique(3)/100)), (int)(h*0.08-8));
         barre4.setBackground(getCouleurBarre((int)perso.getCaracteristique(3)));
         barre4fond.add(barre4);
 
         barre5 = new JPanel();
-        barre5.setBounds(4, 4, (int)((l*0.6-8)*(perso.getCaracteristique(4)/100)), (int)(h*0.1-8));
+        barre5.setBounds(4, 4, (int)((l*0.5-8)*(perso.getCaracteristique(4)/100)), (int)(h*0.08-8));
         barre5.setBackground(getCouleurBarre((int)perso.getCaracteristique(4)));
         barre5fond.add(barre5);
+
+        barre6 = new JPanel();
+        barre6.setBounds(4, 4, (int)((l*0.5-8)*(perso.getCaracteristique(5)/100)), (int)(h*0.08-8));
+        barre6.setBackground(getCouleurBarre((int)perso.getCaracteristique(5)));
+        barre6fond.add(barre6);
         
 
 /*     -----     Affichage des titres des barres des caracteristiques     -----     */
 
         titreBarre1= new JLabel(perso.getNomCaracteristiques().get(0));
-        titreBarre1.setBounds((int)(l*0.05), (int)(h*0.05), (int)(l*0.2), (int)(h*0.1));
+        titreBarre1.setBounds((int)(l*0.05), (int)(h*0.05), (int)(l*0.2), (int)(h*0.08));
         titreBarre1.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
         panneau3.add(titreBarre1);
 
         titreBarre2= new JLabel(perso.getNomCaracteristiques().get(1));
-        titreBarre2.setBounds((int)(l*0.05), (int)(h*0.25), (int)(l*0.2), (int)(h*0.1));
+        titreBarre2.setBounds((int)(l*0.05), (int)(h*0.2), (int)(l*0.2), (int)(h*0.08));
         titreBarre2.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
         panneau3.add(titreBarre2);
 
         titreBarre3= new JLabel(perso.getNomCaracteristiques().get(2));
-        titreBarre3.setBounds((int)(l*0.05), (int)(h*0.45), (int)(l*0.2), (int)(h*0.1));
+        titreBarre3.setBounds((int)(l*0.05), (int)(h*0.35), (int)(l*0.2), (int)(h*0.08));
         titreBarre3.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
         panneau3.add(titreBarre3);
 
         titreBarre4= new JLabel(perso.getNomCaracteristiques().get(3));
-        titreBarre4.setBounds((int)(l*0.05), (int)(h*0.65), (int)(l*0.2), (int)(h*0.1));
+        titreBarre4.setBounds((int)(l*0.05), (int)(h*0.5), (int)(l*0.2), (int)(h*0.08));
         titreBarre4.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
         panneau3.add(titreBarre4);
 
         titreBarre5= new JLabel(perso.getNomCaracteristiques().get(4));
-        titreBarre5.setBounds((int)(l*0.05), (int)(h*0.85), (int)(l*0.2), (int)(h*0.1));
+        titreBarre5.setBounds((int)(l*0.05), (int)(h*0.65), (int)(l*0.2), (int)(h*0.08));
         titreBarre5.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
         panneau3.add(titreBarre5);
+
+        titreBarre6= new JLabel(perso.getNomCaracteristiques().get(5));
+        titreBarre6.setBounds((int)(l*0.05), (int)(h*0.8), (int)(l*0.2), (int)(h*0.08));
+        titreBarre6.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
+        panneau3.add(titreBarre6);
 
 /*     -----     Affichage des icones barres des caracteristiques     -----     */
 
         image1Label=new JLabel(new ImageIcon("img/vieLogo.png"));
-        image1Label.setBounds((int)(l*0.3-30),(int)(h*0.05),30,30);
+        image1Label.setBounds((int)(l*0.3-24),(int)(h*0.05),24,24);
         panneau3.add(image1Label);
 
         image2Label=new JLabel(new ImageIcon("img/nourritureLogo.png"));
-        image2Label.setBounds((int)(l*0.3-30),(int)(h*0.25),30,30);
+        image2Label.setBounds((int)(l*0.3-24),(int)(h*0.2),24,24);
         panneau3.add(image2Label);
 
         image3Label=new JLabel(new ImageIcon("img/energieLogo.png"));
-        image3Label.setBounds((int)(l*0.3-30),(int)(h*0.45),30,30);
+        image3Label.setBounds((int)(l*0.3-24),(int)(h*0.35),24,24);
         panneau3.add(image3Label);
 
         image4Label=new JLabel(new ImageIcon("img/hygieneLogo.png"));
-        image4Label.setBounds((int)(l*0.3-30),(int)(h*0.65),30,30);
+        image4Label.setBounds((int)(l*0.3-24),(int)(h*0.5),24,24);
         panneau3.add(image4Label);
 
         image5Label=new JLabel(new ImageIcon("img/toilettesLogo.png"));
-        image5Label.setBounds((int)(l*0.3-30),(int)(h*0.85),30,30);
+        image5Label.setBounds((int)(l*0.3-24),(int)(h*0.65),24,24);
         panneau3.add(image5Label);
+
+        image6Label=new JLabel(new ImageIcon("img/moralLogo.png"));
+        image6Label.setBounds((int)(l*0.3-24),(int)(h*0.8),24,24);
+        panneau3.add(image6Label);
+
+        boutonManger=new JButton("Manger");
+        boutonManger.setBounds((int)(l*0.3+l*0.5), (int)(h*0.2), 90, 24);
+        panneau3.add(boutonManger);
+
+        boutonManger.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+            }});
+
+        boutonDormir=new JButton("Dormir");
+        boutonDormir.setBounds((int)(l*0.3+l*0.5), (int)(h*0.35), 90, 24);
+        panneau3.add(boutonDormir);
+
+        boutonDormir.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                boutonDormir.setVisible(false);
+                boutonReveiller.setVisible(true);
+            }});
+
+        boutonReveiller=new JButton("Reveiller");
+        boutonReveiller.setBounds((int)(l*0.3+l*0.5), (int)(h*0.35), 90, 24);
+        boutonReveiller.setVisible(false);
+        panneau3.add(boutonReveiller);
+
+        boutonReveiller.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                boutonDormir.setVisible(true);
+                boutonReveiller.setVisible(false);
+            }});
+
+        boutonLaver=new JButton("Se laver");
+        boutonLaver.setBounds((int)(l*0.3+l*0.5), (int)(h*0.5), 90, 24);
+        panneau3.add(boutonLaver);
+
+        boutonLaver.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+            }});
+
+        boutonAllerToilettes=new JButton("Toilettes");
+        boutonAllerToilettes.setBounds((int)(l*0.3+l*0.5), (int)(h*0.65), 90, 24);
+        panneau3.add(boutonAllerToilettes);
+
+        boutonAllerToilettes.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+            }});
+
+        boutonJouer=new JButton("Jouer");
+        boutonJouer.setBounds((int)(l*0.3+l*0.5), (int)(h*0.8), 90, 24);
+        panneau3.add(boutonJouer);
+
+        boutonJouer.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+            }});
+
+
+
     }
 
     private void affichagePanneau4(Personnage perso, ArrayList<Piece> pieces)

@@ -6,11 +6,11 @@ public class Jeu {
 	Jeu()
 	{
 		perso = new Chien("Pipou");
-		Interface Iface=new Interface("jeu", perso);
-		Iface.initFenetreJeu();
-		/*pieces=new ArrayList<Piece>();
+		pieces=new ArrayList<Piece>();
 		initPieces();
-		initPerso();*/
+		Interface Iface=new Interface("jeu", perso, pieces);
+		Iface.initFenetreJeu();
+		//initPerso();
 	}
 	
 	

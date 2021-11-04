@@ -2,8 +2,11 @@ import javax.swing.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.event.*;
+
 
 public class FenetreJeu extends JFrame{
+
     int largeur;
     int hauteur;
     boolean active;
@@ -51,9 +54,16 @@ public class FenetreJeu extends JFrame{
     JLabel image5Label;
 
     JLabel imagePlanLabel;
+
+    JButton boutonSalon;
+    JButton boutonCuisine;
+    JButton boutonChambre;
+    JButton boutonSdb;
+    JButton boutonToilettes;
+    JButton boutonJardin;
     
 
-    FenetreJeu(Personnage perso)
+    FenetreJeu(Personnage perso, ArrayList<Piece> pieces)
     {
         largeur=800;
         hauteur=600;
@@ -87,9 +97,9 @@ public class FenetreJeu extends JFrame{
 
         creationBarres(perso);
 
-        imagePlanLabel=new JLabel(new ImageIcon("img/PlanMaison.png"));
-        imagePlanLabel.setBounds(0,0,300,300);
-        panneau4.add(imagePlanLabel);
+        affichagePanneau4(perso, pieces);
+
+        boutonSetVisible(perso, pieces);
 
         this.add(panneau1);
         this.add(panneau2);
@@ -312,6 +322,96 @@ public class FenetreJeu extends JFrame{
         image5Label=new JLabel(new ImageIcon("img/toilettesLogo.png"));
         image5Label.setBounds((int)(l*0.3-30),(int)(h*0.85),30,30);
         panneau3.add(image5Label);
+    }
+
+    private void affichagePanneau4(Personnage perso, ArrayList<Piece> pieces)
+    {
+        boutonSalon=new JButton(new ImageIcon("img/fleche.png"));
+        boutonSalon.setBounds(50, 220, 20, 20);
+        panneau4.add(boutonSalon);
+
+        boutonSalon.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                perso.setPiece(0);
+                boutonSetVisible(perso, pieces);
+            }});
+
+        boutonCuisine=new JButton(new ImageIcon("img/fleche.png"));
+        boutonCuisine.setBounds(150, 150, 20, 20);
+        panneau4.add(boutonCuisine);
+
+        boutonCuisine.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                perso.setPiece(1);
+                boutonSetVisible(perso, pieces);
+            }});
+
+        boutonChambre=new JButton(new ImageIcon("img/fleche.png"));
+        boutonChambre.setBounds(20, 20, 20, 20);
+        panneau4.add(boutonChambre);
+
+        boutonChambre.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                perso.setPiece(2);
+                boutonSetVisible(perso, pieces);
+            }});
+
+        boutonSdb=new JButton(new ImageIcon("img/fleche.png"));
+        boutonSdb.setBounds(130, 20, 20, 20);
+        panneau4.add(boutonSdb);
+
+        boutonSdb.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                perso.setPiece(3);
+                boutonSetVisible(perso, pieces);
+            }});
+
+        boutonToilettes=new JButton(new ImageIcon("img/fleche.png"));
+        boutonToilettes.setBounds(250, 130, 20, 20);
+        panneau4.add(boutonToilettes);
+
+        boutonToilettes.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                perso.setPiece(4);
+                boutonSetVisible(perso, pieces);
+            }});
+
+        boutonJardin=new JButton(new ImageIcon("img/fleche.png"));
+        boutonJardin.setBounds(200, 20, 20, 20);
+        panneau4.add(boutonJardin);
+
+        boutonJardin.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e)
+            {
+                perso.setPiece(5);
+                boutonSetVisible(perso, pieces);
+            }});
+
+        imagePlanLabel=new JLabel(new ImageIcon("img/PlanMaison.png"));
+        imagePlanLabel.setBounds(0,0,300,300);
+        panneau4.add(imagePlanLabel);
+    }
+
+    void boutonSetVisible(Personnage perso, ArrayList<Piece> pieces)
+    {
+        JButton[] boutonListe = {boutonSalon, boutonCuisine, boutonChambre, boutonSdb, boutonToilettes, boutonJardin};
+        for(int i=0;i<boutonListe.length;i++)
+        {
+            if(i==perso.getPiece())
+            {
+                boutonListe[i].setVisible(false);
+            }
+            else
+            {
+                if(pieces.get(perso.getPiece()).getPieceAdja().contains(pieces.get(i)))
+                {
+                    boutonListe[i].setVisible(true);
+                }
+                else
+                {
+                    boutonListe[i].setVisible(false);
+                }
+            }
+        }
     }
 
     private Color getCouleurBarre(int val)

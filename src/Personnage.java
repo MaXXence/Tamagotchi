@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
 
 import java.util.ArrayList;
@@ -12,8 +11,6 @@ public class Personnage {
 	protected ArrayList<String> nomCaracteristiques;
 	private String etatPhysique;
 	private String etatMoral;
-	private String type;
-
 	
 	public Personnage(String n)
 	{

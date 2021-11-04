@@ -1,11 +1,14 @@
+import java.util.ArrayList;
 
 public class Interface{
     private FenetreCreation f1;
     private FenetreJeu f2;
     private Personnage perso;
-    Interface(String i,Personnage p)
+    private ArrayList<Piece> pieces;
+    Interface(String i,Personnage p, ArrayList<Piece> pi)
     {
         perso =p;
+        pieces = pi;
     }
     void initFenetreCreation()
     {
@@ -13,7 +16,7 @@ public class Interface{
     }
     void initFenetreJeu()
     {
-        f2=new FenetreJeu(perso);
+        f2=new FenetreJeu(perso,pieces);
     }
     String getNomCreation()
     {

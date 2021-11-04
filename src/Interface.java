@@ -15,7 +15,6 @@ public class Interface{
     {
         f2=new FenetreJeu(perso);
     }
-
     String getNomCreation()
     {
         return f1.getNom();
@@ -27,6 +26,10 @@ public class Interface{
     boolean getActiveCreation()
     {
         return f1.getActive();
+    }
+    boolean getActiveJeu()
+    {
+        return f2.getActive();
     }
 
 }

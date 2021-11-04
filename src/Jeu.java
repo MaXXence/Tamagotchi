@@ -5,7 +5,7 @@ public class Jeu {
 	private Interface Iface;
 	Jeu()
 	{
-		perso = new Chien("pipou");
+		perso = new Chien("Pipou");
 		Interface Iface=new Interface("jeu", perso);
 		Iface.initFenetreJeu();
 		/*pieces=new ArrayList<Piece>();
@@ -17,15 +17,35 @@ public class Jeu {
 	public void initPieces()
 	{
 		pieces.add(new Piece("salon"));
+		pieces.add(new Piece("cuisine"));
 		pieces.add(new Piece("chambre"));
-		pieces.add(new Piece("jardin"));
+		pieces.add(new Piece("salle de bain"));
 		pieces.add(new Piece("toilettes"));
+		pieces.add(new Piece("jardin"));
+
+		//salon
 		pieces.get(0).addPieceAdja(pieces.get(1));
 		pieces.get(0).addPieceAdja(pieces.get(2));
-		pieces.get(0).addPieceAdja(pieces.get(3));
+		pieces.get(0).addPieceAdja(pieces.get(4));
+		pieces.get(0).addPieceAdja(pieces.get(5));
+
+		//cuisine
 		pieces.get(1).addPieceAdja(pieces.get(0));
+
+
+		//chambre
 		pieces.get(2).addPieceAdja(pieces.get(0));
-		pieces.get(3).addPieceAdja(pieces.get(0));
+		pieces.get(2).addPieceAdja(pieces.get(3));
+
+
+		//salle de bain
+		pieces.get(3).addPieceAdja(pieces.get(2));
+
+		//toilettes
+		pieces.get(4).addPieceAdja(pieces.get(0));
+
+		//jardin
+		pieces.get(5).addPieceAdja(pieces.get(0));
 	}
 	public void initPerso()
 	{

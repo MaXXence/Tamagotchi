@@ -1,27 +1,34 @@
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+
 import java.util.ArrayList;
 
 public class Personnage {
 	private String nom;
-	private Date dateNaissance;
+	private LocalDate dateNaissance;
 	private int pieceActuelle;
-	private double[] caracteristiques={80,80,80,80,80,80};
+	private double[] caracteristiques={5,25,50,70,90};
 	protected ArrayList<String> nomCaracteristiques;
+	private String etatPhysique;
+	private String etatMoral;
 	private String type;
 
 	
 	public Personnage(String n)
 	{
 		nom=n;
-		dateNaissance=new Date();
-		pieceActuelle=0;
+		dateNaissance=LocalDate.now();
+		pieceActuelle=1;
+		etatPhysique="En forme";
+		etatMoral="Heureux";
 	}
 	
 	public String getNom()
 	{
 		return nom;
 	}
-	public Date getDateNaissance()
+	public LocalDate getDateNaissance()
 	{
 		return dateNaissance;
 	}
@@ -44,5 +51,24 @@ public class Personnage {
 	public double getCaracteristique(int n)
 	{
 		return caracteristiques[n];
+	}
+	public ArrayList<Integer> getAge()
+	{
+		LocalDate d=LocalDate.now();
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
+		Period age = Period.between(dateNaissance, d);
+		ageList.add(age.getYears());
+		ageList.add(age.getMonths());
+		ageList.add(age.getDays());
+
+		return ageList;
+	}
+	public String getEtatPhys()
+	{
+		return etatPhysique;
+	}
+	public String getEtatMoral()
+	{
+		return etatMoral;
 	}
 }

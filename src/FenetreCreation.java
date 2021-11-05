@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.event.*;
 
 public class FenetreCreation extends JFrame{
+    JPanel test;
     JPanel panneau1;
     JPanel panneau2;
     JPanel panneau3;
